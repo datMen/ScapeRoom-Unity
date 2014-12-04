@@ -4,8 +4,12 @@ using System.Collections;
 public class Puerta : MonoBehaviour {
 
 	private Inventario inventario;
-	private bool opening;
-	private bool close;
+	// door_status:
+	// 		0 = Closed
+	// 		1 = Opening
+	// 		2 = Opened
+	// 		3 = Closing
+	private int door_status = 0;
 	
 	void Start()
 	{
@@ -15,17 +19,18 @@ public class Puerta : MonoBehaviour {
 
 	void Update ()
 	{
-		if (inventario.getLlave()) {
-			if (opening) {
-				if (!close && !animation.IsPlaying("animCerrarPuerta")) {
-					animation.Play("animAbrirPuerta");
-					opening = false;
+			
+		if (inventario.getLlave()) { // Player has the key
+			if (door_status == 1) { // Door is about to be opened
+				if (!animation.IsPlaying("animCerrarPuerta")) {
+					animation.Play("animAbrirPuerta"); // Opening door
+					door_status = 2; // Door opened
 				}
 			}
-			else if (close && !opening) {
+			else if (door_status == 3) { // Door is about to be closed
 				if (!animation.IsPlaying("animAbrirPuerta")) {
-					animation.Play("animCerrarPuerta");
-					close = false;
+					animation.Play("animCerrarPuerta"); // Closing door
+					door_status = 0; // Door closed
 				}
 			}
 		}
@@ -34,15 +39,14 @@ public class Puerta : MonoBehaviour {
 	void OnTriggerEnter(Collider collider)
 	{
 		if (inventario.getLlave()) {
-			opening = true;
-			close = false;
+			door_status = 1;
 		}
 	}
 
 	void OnTriggerExit(Collider collider)
 	{
 		if (inventario.getLlave()) {
-			close = true;
+			door_status = 3;
 		}
 	}
 
