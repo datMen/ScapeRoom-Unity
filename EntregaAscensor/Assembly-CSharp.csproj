@@ -47,10 +47,13 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Prefabs\FPS Character\Scripts\MouseLook.cs" />
+     <Compile Include="Assets\Scripts\Ascensor.cs" />
      <Compile Include="Assets\Scripts\Boton.cs" />
      <Compile Include="Assets\Scripts\Inventario.cs" />
      <Compile Include="Assets\Scripts\Llave.cs" />
      <Compile Include="Assets\Scripts\Puerta.cs" />
+     <Compile Include="Assets\Scripts\PuertaAscensor1.cs" />
+     <Compile Include="Assets\Scripts\PuertaAscensor2.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
