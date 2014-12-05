@@ -25,4 +25,8 @@ public class Ascensor : MonoBehaviour {
 	public void openDoor2() {
 		door2.animation.Play("animAbrirPuertaAscensor");
 	}
+
+	public void closeDoor2() {
+		door2.animation.Play("animCerrarPuertaAscensor");
+	}
 }

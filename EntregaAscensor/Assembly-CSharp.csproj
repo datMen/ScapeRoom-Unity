@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\Puerta.cs" />
      <Compile Include="Assets\Scripts\PuertaAscensor1.cs" />
      <Compile Include="Assets\Scripts\PuertaAscensor2.cs" />
+     <Compile Include="Assets\Scripts\Teletransporte.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
