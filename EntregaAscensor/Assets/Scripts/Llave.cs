@@ -3,19 +3,19 @@ using System.Collections;
 
 public class Llave : MonoBehaviour 
 {
-	private Inventario inventario;
+	private Inventario inventory;
 	
-	void Start()
-	{
+	void Start() {
+		// Get player GameObject & assign his "Inventario" script to local variable "inventory"
 		GameObject player = GameObject.Find("Player") as GameObject;
-		inventario = player.GetComponent<Inventario> ();
+		inventory = player.GetComponent<Inventario> ();
 	}
 	
-	
-	void OnTriggerEnter(Collider collider)
-	{
-		inventario.setLlave(true);
-		Destroy (gameObject);
+
+	// Set inventory key = true when player joins the collider zone and destroy key GameObject
+	void OnTriggerEnter(Collider collider) {
+		inventory.setKey(true);
+		Destroy(gameObject);
 	}
 	
 }

@@ -2,20 +2,16 @@
 using System.Collections;
 
 public class Inventario : MonoBehaviour {
+	private bool key;
 	
-	
-	private bool llave;
-	
-	
-	public bool getLlave()
-	{
-		return llave;
+	// Returns "key" variable
+	public bool getKey() {
+		return key;
 		
 	}
-	
-	public void setLlave(bool val)
-	{
-		llave = val;
-		Debug.Log ("Tiene llave: "+llave);
+
+	// Set "key" variable
+	public void setKey(bool val) {
+		key = val;
 	}
 }
