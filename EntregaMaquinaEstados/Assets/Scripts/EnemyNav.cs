@@ -3,10 +3,13 @@ using System.Collections;
 
 public class EnemyNav : MonoBehaviour {
     [SerializeField]
-    private Transform target;
+    private Transform enemy_target;
 
     [SerializeField]
     private Transform nav_floor;
+
+    [SerializeField]
+    private Transform player;
 
     private Vector3 nav_floor_size;
     private NavMeshAgent agent;
@@ -20,17 +23,25 @@ public class EnemyNav : MonoBehaviour {
     
     void Update () {
         if (getWayPointDistance() < taget_max_distance) { // Agent is too close to the waypoint
-            setRandomWayPoint();
+           setRandomWayPoint();
         }
     }
 
     float getWayPointDistance() {
-        return Vector3.Distance(transform.position, target.position);
+        return Vector3.Distance(transform.position, enemy_target.position);
     }
 
-    // 
+    // Update WayPoint position randomly
     void setRandomWayPoint() {
-        target.position = new Vector3(Random.Range(-nav_floor_size.x, nav_floor_size.x), target.position.y, Random.Range(-nav_floor_size.z, nav_floor_size.z));
-        agent.SetDestination(target.position);
+        enemy_target.position = new Vector3(Random.Range(-nav_floor_size.x, nav_floor_size.x), enemy_target.position.y, Random.Range(-nav_floor_size.z, nav_floor_size.z));
+        agent.SetDestination(enemy_target.position);
+    }
+
+    public void startFollowPlayer() {
+        agent.SetDestination(player.position);
+    }
+
+    public void stopFollowPlayer() {
+        agent.SetDestination(enemy_target.position);
     }
 }
