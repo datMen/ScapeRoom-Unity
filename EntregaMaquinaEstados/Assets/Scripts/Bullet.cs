@@ -2,19 +2,23 @@
 using System.Collections;
 
 public class Bullet : MonoBehaviour {
-    private Health target_health;
+    [SerializeField]
+    private float damage;
 
+    private Health target_health;
     private RaycastHit destiny_hit;
     private bool start = false;
-    private float damage = 1f;
+    private float time_destroy = 5f;
 
     void Update() {
         if (start) {
             if (Vector3.Distance(transform.position, destiny_hit.point) < 0.1F) {
-                Destroy(this.gameObject);
+                Destroy(this.gameObject, time_destroy);
             }
-            Debug.DrawLine(transform.position, destiny_hit.point, Color.red);
-            transform.position = Vector3.MoveTowards(transform.position, destiny_hit.point, Time.deltaTime * 25.0f);
+            else {
+                Debug.DrawLine(transform.position, destiny_hit.point, Color.red);
+                transform.position = Vector3.MoveTowards(transform.position, destiny_hit.point, Time.deltaTime * 25.0f);
+            }
         }
     }
 

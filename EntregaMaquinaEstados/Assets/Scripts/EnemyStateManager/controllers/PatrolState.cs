@@ -2,17 +2,17 @@ using UnityEngine;
 using System.Collections;
 
 public class PatrolState : EnemyState {
-    private Vector3 nav_floor_size;
+    private Vector3 waypoint_range;
     float taget_max_distance;
 
     public PatrolState(Context context) {
         this.context = context;
-        nav_floor_size = context.nav_floor.transform.localScale*5;
+        this.waypoint_range = context.waypoint_range.transform.localScale*5;
         taget_max_distance = context.agent.stoppingDistance;
     }
 
     private void setRandomWayPoint() {
-        context.enemy_target.position = new Vector3(Random.Range(-nav_floor_size.x, nav_floor_size.x), context.enemy_target.position.y, Random.Range(-nav_floor_size.z, nav_floor_size.z));
+        context.enemy_target.position = new Vector3(Random.Range(-waypoint_range.x, waypoint_range.x)+context.waypoint_start_pos.x, context.enemy_target.position.y, Random.Range(-waypoint_range.z, waypoint_range.z)+context.waypoint_start_pos.z);
         context.agent.SetDestination(context.enemy_target.position);
     }
 
@@ -22,7 +22,7 @@ public class PatrolState : EnemyState {
     }
 
     public override void onUpdate() {
-        if (context.agent.remainingDistance < taget_max_distance) { // Agent is too close to the waypoint
+        if (context.agent.remainingDistance <= taget_max_distance) { // Agent is too close to the waypoint
            setRandomWayPoint();
         }
     }

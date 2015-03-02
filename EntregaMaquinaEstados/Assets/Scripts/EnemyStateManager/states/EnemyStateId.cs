@@ -1,5 +1,4 @@
-public enum EnemyStateId
-{
+public enum EnemyStateId {
     PatrolState,
     DetectedState,
     AttackState

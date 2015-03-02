@@ -35,7 +35,11 @@ public class DetectedState : EnemyState {
                     out hit);
         Debug.DrawLine(context.enemy_tr.position, hit.point, Color.white);
         if (hit.collider.tag == "Player") {
+            context.agent.stoppingDistance = context.initial_stoppingDistance;
             context.updateState(EnemyStateId.AttackState);
+        }
+        else {
+            context.agent.stoppingDistance = context.initial_stoppingDistance/3;
         }
     }
 }

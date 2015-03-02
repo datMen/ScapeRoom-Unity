@@ -22,9 +22,9 @@ public class EnemyStateManager : MonoBehaviour, Context {
     }
 
     [SerializeField]
-    private Transform _nav_floor;
-    public Transform nav_floor {
-        get { return _nav_floor; }
+    private Transform _waypoint_range;
+    public Transform waypoint_range {
+        get { return _waypoint_range; }
     }
 
     [SerializeField]
@@ -34,15 +34,21 @@ public class EnemyStateManager : MonoBehaviour, Context {
     }
 
     [SerializeField]
-    private GameObject _bullet;
-    public GameObject bullet {
-        get { return _bullet; }
-    }
-
-    [SerializeField]
     private Transform _gun;
     public Transform gun {
         get { return _gun; }
+    }
+
+    [SerializeField]
+    private GameObject _ammo;
+    public GameObject ammo {
+        get { return _ammo; }
+    }
+
+    [SerializeField]
+    private int _fire_rate;
+    public int fire_rate {
+        get { return _fire_rate; }
     }
 
     private NavMeshAgent _agent;
@@ -50,11 +56,23 @@ public class EnemyStateManager : MonoBehaviour, Context {
         get { return _agent; }
     }
 
+    private float _initial_stoppingDistance;
+    public float initial_stoppingDistance {
+        get { return _initial_stoppingDistance; }
+    }
+
+    private Vector3 _waypoint_start_pos;
+    public Vector3 waypoint_start_pos {
+        get { return _waypoint_start_pos; }
+    }
+
     void Start () {
         _agent = GetComponent<NavMeshAgent>();
 
         startStates();
         startState();
+        _initial_stoppingDistance = agent.stoppingDistance;
+        _waypoint_start_pos = waypoint_range.position;
     }
 
     void Update () {
