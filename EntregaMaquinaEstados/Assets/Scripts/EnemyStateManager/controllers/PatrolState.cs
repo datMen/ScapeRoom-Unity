@@ -17,7 +17,7 @@ public class PatrolState : EnemyState {
     }
 
     public override void onEnter() {
-        Debug.Log("Patrullando");
+        Debug.Log("Patrolling");
         context.agent.SetDestination(context.enemy_target.position);
     }
 
@@ -28,4 +28,21 @@ public class PatrolState : EnemyState {
     }
 
     public override void onLeave() {}
+
+    public override void startPatrol() {}
+
+    public override void startDetected() {
+        context.updateState(EnemyStateId.DetectedState);
+    }
+
+    public override void startAttack() {
+        RaycastHit hit;
+        Physics.Raycast(context.enemy_tr.position, 
+                    (context.player.transform.position - context.enemy_tr.position).normalized, 
+                    out hit);
+        Debug.DrawLine(context.enemy_tr.position, hit.point, Color.white);
+        if (hit.collider.tag == "Player") {
+            context.updateState(EnemyStateId.AttackState);
+        }
+    }
 }

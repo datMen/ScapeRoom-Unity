@@ -7,4 +7,8 @@ public abstract class EnemyState {
     public abstract void onEnter();
     public abstract void onUpdate();
     public abstract void onLeave();
+
+    public abstract void startPatrol();
+    public abstract void startDetected();
+    public abstract void startAttack();
 }

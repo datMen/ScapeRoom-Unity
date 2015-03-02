@@ -33,6 +33,18 @@ public class EnemyStateManager : MonoBehaviour, Context {
         get { return _player; }
     }
 
+    [SerializeField]
+    private GameObject _bullet;
+    public GameObject bullet {
+        get { return _bullet; }
+    }
+
+    [SerializeField]
+    private Transform _gun;
+    public Transform gun {
+        get { return _gun; }
+    }
+
     private NavMeshAgent _agent;
     public NavMeshAgent agent {
         get { return _agent; }
@@ -74,5 +86,17 @@ public class EnemyStateManager : MonoBehaviour, Context {
 
     public EnemyStateId getCurStateId() {
         return cur_state_id;
+    }
+
+    public void startPatrol() {
+        cur_state.startPatrol();
+    }
+
+    public void startDetected() {
+        cur_state.startDetected();
+    }
+    
+    public void startAttack() {
+        cur_state.startAttack();
     }
 }
