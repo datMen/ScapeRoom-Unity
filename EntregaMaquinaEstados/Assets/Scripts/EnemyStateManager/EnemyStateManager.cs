@@ -22,9 +22,9 @@ public class EnemyStateManager : MonoBehaviour, Context {
     }
 
     [SerializeField]
-    private Transform _waypoint_range;
-    public Transform waypoint_range {
-        get { return _waypoint_range; }
+    private Transform _waypoint_tr;
+    public Transform waypoint_tr {
+        get { return _waypoint_tr; }
     }
 
     [SerializeField]
@@ -61,18 +61,12 @@ public class EnemyStateManager : MonoBehaviour, Context {
         get { return _initial_stoppingDistance; }
     }
 
-    private Vector3 _waypoint_start_pos;
-    public Vector3 waypoint_start_pos {
-        get { return _waypoint_start_pos; }
-    }
-
     void Start () {
         _agent = GetComponent<NavMeshAgent>();
 
         startStates();
         startState();
         _initial_stoppingDistance = agent.stoppingDistance;
-        _waypoint_start_pos = waypoint_range.position;
     }
 
     void Update () {

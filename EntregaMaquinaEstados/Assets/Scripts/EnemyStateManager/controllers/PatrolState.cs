@@ -7,12 +7,12 @@ public class PatrolState : EnemyState {
 
     public PatrolState(Context context) {
         this.context = context;
-        this.waypoint_range = context.waypoint_range.transform.localScale*5;
+        this.waypoint_range = context.waypoint_tr.transform.localScale*5;
         taget_max_distance = context.agent.stoppingDistance;
     }
 
     private void setRandomWayPoint() {
-        context.enemy_target.position = new Vector3(Random.Range(-waypoint_range.x, waypoint_range.x)+context.waypoint_start_pos.x, context.enemy_target.position.y, Random.Range(-waypoint_range.z, waypoint_range.z)+context.waypoint_start_pos.z);
+        context.enemy_target.position = new Vector3(Random.Range(-waypoint_range.x, waypoint_range.x)+context.waypoint_tr.position.x, context.enemy_target.position.y, Random.Range(-waypoint_range.z, waypoint_range.z)+context.waypoint_tr.position.z);
         context.agent.SetDestination(context.enemy_target.position);
     }
 
