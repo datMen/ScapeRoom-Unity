@@ -12,9 +12,8 @@ public class DetectedState : EnemyState {
     }
 
     public override void onUpdate() {
-        if (Vector3.Distance(context.enemy_tr.position, context.player.transform.position) <= context.agent.stoppingDistance) {
-            Vector3 targetPoint = new Vector3(context.player.transform.position.x, context.enemy_tr.position.y, context.player.transform.position.z);
-            context.enemy_tr.rotation = Quaternion.Slerp(context.enemy_tr.rotation, Quaternion.LookRotation(targetPoint - context.enemy_tr.position), Time.deltaTime * 2F);
+        if (Vector3.Distance(context.enemy_tr.position, context.player.transform.position) <= context.initial_stoppingDistance) {
+            context.updateState(EnemyStateId.AttackMeleeState);
         }
         context.agent.SetDestination(context.player.transform.position);
     }
@@ -28,7 +27,7 @@ public class DetectedState : EnemyState {
 
     public override void startDetected() {}
 
-    public override void startAttack() {
+    public override void startAttackRanged() {
         RaycastHit hit;
         Physics.Raycast(context.enemy_tr.position, 
                     (context.player.transform.position - context.enemy_tr.position).normalized, 
@@ -36,10 +35,12 @@ public class DetectedState : EnemyState {
         Debug.DrawLine(context.enemy_tr.position, hit.point, Color.white);
         if (hit.collider.tag == "Player") {
             context.agent.stoppingDistance = context.initial_stoppingDistance;
-            context.updateState(EnemyStateId.AttackState);
+            context.updateState(EnemyStateId.AttackRangedState);
         }
         else {
             context.agent.stoppingDistance = context.initial_stoppingDistance/3;
         }
     }
+
+    public override void startAttackMelee() {}
 }

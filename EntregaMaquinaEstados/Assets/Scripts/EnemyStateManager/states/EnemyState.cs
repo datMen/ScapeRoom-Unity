@@ -10,5 +10,6 @@ public abstract class EnemyState {
 
     public abstract void startPatrol();
     public abstract void startDetected();
-    public abstract void startAttack();
+    public abstract void startAttackRanged();
+    public abstract void startAttackMelee();
 }

@@ -7,7 +7,12 @@ public class DetectTrigger : MonoBehaviour {
 
     void OnTriggerStay(Collider col) {
         if (col.name == "Player") {
-            manager.startDetected();
+            if (Vector3.Distance(manager.enemy_tr.position, manager.player.transform.position) <= manager.initial_stoppingDistance) {
+                manager.startAttackMelee();
+            }
+            else {
+                manager.startDetected();
+            }
         }
     }
     

@@ -7,7 +7,7 @@ public class AttackTrigger : MonoBehaviour {
 
     void OnTriggerStay(Collider col) {
         if (col.name == "Player") {
-            manager.startAttack();
+            manager.startAttackRanged();
         }
     }
     

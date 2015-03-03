@@ -35,14 +35,16 @@ public class PatrolState : EnemyState {
         context.updateState(EnemyStateId.DetectedState);
     }
 
-    public override void startAttack() {
+    public override void startAttackRanged() {
         RaycastHit hit;
         Physics.Raycast(context.enemy_tr.position, 
                     (context.player.transform.position - context.enemy_tr.position).normalized, 
                     out hit);
         Debug.DrawLine(context.enemy_tr.position, hit.point, Color.white);
         if (hit.collider.tag == "Player") {
-            context.updateState(EnemyStateId.AttackState);
+            context.updateState(EnemyStateId.AttackRangedState);
         }
     }
+
+    public override void startAttackMelee() {}
 }

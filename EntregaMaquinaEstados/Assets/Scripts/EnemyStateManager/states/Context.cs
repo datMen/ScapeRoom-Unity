@@ -5,6 +5,7 @@ public interface Context {
     EnemyStateId getCurStateId();
 
     Transform enemy_tr { get; }
+    Transform enemy_body_tr { get; }
     Transform enemy_target { get; }
     Transform waypoint_tr { get; }
     GameObject player { get; }
@@ -16,5 +17,6 @@ public interface Context {
 
     void startPatrol();
     void startDetected();
-    void startAttack();
+    void startAttackRanged();
+    void startAttackMelee();
 }

@@ -16,6 +16,12 @@ public class EnemyStateManager : MonoBehaviour, Context {
     }
 
     [SerializeField]
+    private Transform _enemy_body_tr;
+    public Transform enemy_body_tr {
+        get { return _enemy_body_tr; }
+    }
+
+    [SerializeField]
     private Transform _enemy_target;
     public Transform enemy_target {
         get { return _enemy_target; }
@@ -108,7 +114,11 @@ public class EnemyStateManager : MonoBehaviour, Context {
         cur_state.startDetected();
     }
     
-    public void startAttack() {
-        cur_state.startAttack();
+    public void startAttackRanged() {
+        cur_state.startAttackRanged();
+    }
+
+    public void startAttackMelee() {
+        cur_state.startAttackMelee();
     }
 }

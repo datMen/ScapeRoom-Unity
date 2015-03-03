@@ -2,10 +2,10 @@ using UnityEngine;
 using System.Collections;
 using System.Timers;
 
-public class AttackState : EnemyState {
+public class AttackRangedState : EnemyState {
     private bool shooting = false;
 
-    public AttackState(Context context) {
+    public AttackRangedState(Context context) {
         this.context = context;
     }
 
@@ -15,6 +15,7 @@ public class AttackState : EnemyState {
     }
 
     public override void onUpdate() {
+
         RaycastHit hit;
         Physics.Raycast(context.enemy_tr.position, 
                     (context.player.transform.position - context.enemy_tr.position).normalized, 
@@ -44,7 +45,11 @@ public class AttackState : EnemyState {
 
     public override void startDetected() {}
 
-    public override void startAttack() {}
+    public override void startAttackRanged() {}
+
+    public override void startAttackMelee() {
+        context.updateState(EnemyStateId.AttackMeleeState);
+    }
 
     private void stopShooting(System.Object source, ElapsedEventArgs e) {
         shooting = false;

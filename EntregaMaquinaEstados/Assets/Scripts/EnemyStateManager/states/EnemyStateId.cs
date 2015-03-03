@@ -1,5 +1,6 @@
 public enum EnemyStateId {
     PatrolState,
     DetectedState,
-    AttackState
+    AttackRangedState,
+    AttackMeleeState
 }
