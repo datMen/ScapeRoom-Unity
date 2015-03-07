@@ -18,6 +18,7 @@ public class AttackMeleeState : EnemyState {
     public override void onUpdate() {
         if (Vector3.Distance(context.enemy_tr.position, context.player.transform.position) <= 1f) {
             if (!inRecoil) {
+                context.player.GetComponent<Health>().hurt(context.melee_damage);
                 context.agent.velocity *= -1;
                 setRandomWayPoint();
             }
@@ -51,10 +52,6 @@ public class AttackMeleeState : EnemyState {
     public override void startAttackRanged() {}
     
     public override void startAttackMelee() {}
-
-    public override void startAttackMeleeHit() {
-        // context.updateState(EnemyStateId.AttackMeleeHitState);
-    }
 
     private void setRandomWayPoint() {
         float waypoint_range = context.melee_range_col.bounds.size.z/2;

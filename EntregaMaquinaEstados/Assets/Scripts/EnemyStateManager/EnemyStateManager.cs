@@ -134,8 +134,4 @@ public class EnemyStateManager : MonoBehaviour, Context {
     public void startAttackMelee() {
         cur_state.startAttackMelee();
     }
-
-    public void startAttackMeleeHit() {
-        cur_state.startAttackMeleeHit();
-    }
 }

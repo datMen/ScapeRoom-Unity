@@ -54,6 +54,4 @@ public class AttackRangedState : EnemyState {
     private void stopShooting(System.Object source, ElapsedEventArgs e) {
         shooting = false;
     }
-
-    public override void startAttackMeleeHit() {}
 }

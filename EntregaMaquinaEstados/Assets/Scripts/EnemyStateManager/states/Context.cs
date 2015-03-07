@@ -22,5 +22,4 @@ public interface Context {
     void startDetected();
     void startAttackRanged();
     void startAttackMelee();
-    void startAttackMeleeHit();
 }

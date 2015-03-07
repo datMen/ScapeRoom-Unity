@@ -12,5 +12,4 @@ public abstract class EnemyState {
     public abstract void startDetected();
     public abstract void startAttackRanged();
     public abstract void startAttackMelee();
-    public abstract void startAttackMeleeHit();
 }

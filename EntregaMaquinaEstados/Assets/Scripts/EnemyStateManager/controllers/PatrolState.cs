@@ -45,6 +45,4 @@ public class PatrolState : EnemyState {
     }
 
     public override void startAttackMelee() {}
-
-    public override void startAttackMeleeHit() {}
 }

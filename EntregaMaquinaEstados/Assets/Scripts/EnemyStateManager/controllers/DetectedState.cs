@@ -38,6 +38,4 @@ public class DetectedState : EnemyState {
     public override void startAttackMelee() {
         context.updateState(EnemyStateId.AttackMeleeState);
     }
-
-    public override void startAttackMeleeHit() {}
 }
