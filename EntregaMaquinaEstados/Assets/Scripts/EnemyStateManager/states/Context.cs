@@ -4,7 +4,6 @@ public interface Context {
     void updateState(EnemyStateId state);
     EnemyStateId getCurStateId();
 
-    Transform enemy_tr { get; }
     Transform enemy_body_tr { get; }
     Transform enemy_target { get; }
     Transform waypoint_tr { get; }
@@ -12,6 +11,10 @@ public interface Context {
     Transform gun { get; }
     GameObject ammo { get; }
     int fire_rate { get; }
+    float melee_damage { get; }
+    Collider melee_range_col { get; }
+
+    Transform enemy_tr { get; }
     NavMeshAgent agent { get; }
     float initial_stoppingDistance { get; }
 
@@ -19,4 +22,5 @@ public interface Context {
     void startDetected();
     void startAttackRanged();
     void startAttackMelee();
+    void startAttackMeleeHit();
 }

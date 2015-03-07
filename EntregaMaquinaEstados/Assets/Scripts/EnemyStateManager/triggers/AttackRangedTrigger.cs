@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class AttackTrigger : MonoBehaviour {
+public class AttackRangedTrigger : MonoBehaviour {
     [SerializeField]
     private EnemyStateManager manager;
 
@@ -14,6 +14,6 @@ public class AttackTrigger : MonoBehaviour {
     void OnTriggerExit(Collider col) {
         if (col.name == "Player") {
             manager.startPatrol();
-         }
+        }
     }
 }

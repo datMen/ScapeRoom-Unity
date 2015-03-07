@@ -10,12 +10,6 @@ public class EnemyStateManager : MonoBehaviour, Context {
     private EnemyStateId cur_state_id;
 
     [SerializeField]
-    private Transform _enemy_tr;
-    public Transform enemy_tr {
-        get { return _enemy_tr; }
-    }
-
-    [SerializeField]
     private Transform _enemy_body_tr;
     public Transform enemy_body_tr {
         get { return _enemy_body_tr; }
@@ -57,6 +51,23 @@ public class EnemyStateManager : MonoBehaviour, Context {
         get { return _fire_rate; }
     }
 
+    [SerializeField]
+    private float _melee_damage;
+    public float melee_damage {
+        get { return _melee_damage; }
+    }
+
+    [SerializeField]
+    private Collider _melee_range_col;
+    public Collider melee_range_col {
+        get { return _melee_range_col; }
+    }
+
+    private Transform _enemy_tr;
+    public Transform enemy_tr {
+        get { return _enemy_tr; }
+    }
+
     private NavMeshAgent _agent;
     public NavMeshAgent agent {
         get { return _agent; }
@@ -72,6 +83,8 @@ public class EnemyStateManager : MonoBehaviour, Context {
 
         startStates();
         startState();
+
+        _enemy_tr = transform;
         _initial_stoppingDistance = agent.stoppingDistance;
     }
 
@@ -120,5 +133,9 @@ public class EnemyStateManager : MonoBehaviour, Context {
 
     public void startAttackMelee() {
         cur_state.startAttackMelee();
+    }
+
+    public void startAttackMeleeHit() {
+        cur_state.startAttackMeleeHit();
     }
 }
